@@ -1,6 +1,6 @@
 import { Home } from './pages/home/Home'; //LandingPage
 import { Login } from './pages/login/Login'
-// import Register from './pages/register/Register'
+import { Register } from './pages/register/Register'
 import { User } from "./pages/user/User";//AppLayout
 import { Empty } from "./pages/empty/Empty";
 import { PrivateRoute } from "./PrivateRoute";//ProtectedRoute 
@@ -15,26 +15,13 @@ function App() {
   return (
 
     <Switch>
-      {/* <Route exact path="/">
-          <Home />
-        </Route> */}
+
 
       <Route exact path="/" component={Home} />
-
       <PrivateRoute exact path="/user" component={User} />
-
-      {/* <PrivateRoute exact path="/user" component={User} /> */}
-
-      {/* <Route path="/login">
-        <Login />
-      </Route> */}
       <Route exact path="/login" component={Login} />
+      <Route exact path="/register" component={Register} />
       <Route path='*' component={Empty} />
-
-
-      {/* <Route path="/register">
-          <Register />
-        </Route> */}
 
     </Switch>
 
