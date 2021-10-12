@@ -1,5 +1,5 @@
 import { Home } from './pages/home/Home'; //LandingPage
-// import Login from './pages/login/Login'
+import { Login } from './pages/login/Login'
 // import Register from './pages/register/Register'
 import { User } from "./pages/user/User";//AppLayout
 import { Empty } from "./pages/empty/Empty";
@@ -28,7 +28,7 @@ function App() {
       {/* <Route path="/login">
         <Login />
       </Route> */}
-
+      <Route exact path="/login" component={Login} />
       <Route path='*' component={Empty} />
 
 
