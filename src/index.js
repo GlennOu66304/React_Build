@@ -3,14 +3,17 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
-
+import { AuthContextProvider } from './contexts/AuthContext'
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
   </BrowserRouter>,
   rootElement
+
 );
 
 // ReactDOM.render(

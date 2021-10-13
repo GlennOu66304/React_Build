@@ -63,3 +63,8 @@
   cursor: pointer;
   position: relative;
 }
+.logout {
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}

@@ -1,7 +1,38 @@
-import auth from "../../auth";
+// import auth from "../../auth";
+import React, { useRef } from 'react'
 import './register.css'
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import http from '../../http-common'
+
 export const Register = props => {
+    const username = useRef()
+    const email = useRef()
+    const password = useRef()
+    const passwordAgain = useRef()
+    const history = useHistory()
+
+    const handleClick = async (e) => {
+        e.preventDefault();
+        if (passwordAgain.current.value !== password.current.value) {
+            password.current.setCustomValidity("password don't match")
+        } else {
+            const user = {
+                username: username.current.value,
+                email: email.current.value,
+                password: password.current.value,
+            }
+            try {
+                await http.post('users/register', user)
+                history.push('/login')
+            } catch (err) {
+                console.log(err)
+            }
+
+        }
+
+    }
+
     return (
         <div className='login'>
 
@@ -14,17 +45,17 @@ export const Register = props => {
 
                 <div className="loginRight">
 
-                    <form className="loginBox">
-                        <input placeholder="Username" required className="loginInput" />
-                        <input placeholder="Email" required type="email" className="loginInput" />
-                        <input placeholder="Password" required type="password" minLength='6' className="loginInput" />
-                        <input placeholder="Password Again" required type="password" className="loginInput" />
-
-                        <button className="loginButton" type='submit' onClick={() => {
+                    <form className="loginBox" onSubmit={handleClick} >
+                        <input placeholder="Username" required className="loginInput" ref={username} />
+                        <input placeholder="Email" required type="email" className="loginInput" ref={email} />
+                        <input placeholder="Password" required type="password" minLength='6' className="loginInput" ref={password} />
+                        <input placeholder="Password Again" required type="password" className="loginInput" ref={passwordAgain} />
+                        <button className="loginButton" type='submit'>Sign Up</button>
+                        {/* <button className="loginButton" type='submit' onClick={() => {
                             auth.login(() => {
                                 props.history.push("/user");
                             });
-                        }}>Sign Up</button>
+                        }}>Sign Up</button> */}
                     </form>
                     <button className="loginRegisterbutton" >
                         <Link to="/login" style={{ textDecoration: 'none' }}>

@@ -8,16 +8,6 @@ export const User = props => {
 
     return (
         <>
-            {/* <button
-                onClick={() => {
-                    auth.logout(() => {
-                        props.history.push("/");
-                    });
-                }}
-            >
-                Logout
-            </button> */}
-
             <div className="topbarContainer">
                 <div className="topbarLeft">
                     <Link to="/" style={{ textDecoration: 'none' }}><span className="logo">Lama Social</span></Link>
@@ -40,7 +30,7 @@ export const User = props => {
 
                     <div className="topbarIcons">
                         <div className="topbarIconItem">
-                            <button
+                            <button className="Logout"
                                 onClick={() => {
                                     auth.logout(() => {
                                         props.history.push("/");
